@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { formatDistanceToNow } from 'date-fns';
-import Timer from '../Timer/Timer';
+// import Timer from '../Timer/Timer';
 import classes from './Task.module.css';
 
 export default function Task({
@@ -65,7 +65,7 @@ export default function Task({
             >
               {description}
             </span>
-            <Timer startTime={timeCreated} />
+            {/* <Timer startTime={timeCreated} /> */}
             <span className={classes.created}>created {timePast} ago</span>
           </label>
           <button
