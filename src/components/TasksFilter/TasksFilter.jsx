@@ -2,45 +2,50 @@ import React, { useState } from 'react';
 import classes from './TasksFilter.module.css';
 
 export function TasksFilter({ changeFilter }) {
-  const [isSelected, setIsSelected] = useState(false);
-  const handleButtonClick = () => {
-    setIsSelected(!isSelected);
-  };
+  const [selectedFilter, setSelectedFilter] = useState('All');
+
   const handleFilterChange = (filter) => {
+    setSelectedFilter(filter);
     changeFilter(filter);
   };
+
   return (
     <ul className={classes.filters}>
       <li>
-        <button
-          className={isSelected ? 'selected' : ''}
-          onClick={() => {
-            handleFilterChange('All');
-            handleButtonClick();
-          }}
-        >
+        <label>
+          <input
+            type="radio"
+            value="All"
+            checked={selectedFilter === 'All'}
+            onChange={() => handleFilterChange('All')}
+            className={selectedFilter === 'All' ? classes.selected : ''}
+          />
           All
-        </button>
+        </label>
       </li>
       <li>
-        <button
-          onClick={() => {
-            handleFilterChange('Active');
-            handleButtonClick();
-          }}
-        >
+        <label>
+          <input
+            type="radio"
+            value="Active"
+            checked={selectedFilter === 'Active'}
+            onChange={() => handleFilterChange('Active')}
+            className={selectedFilter === 'Active' ? classes.selected : ''}
+          />
           Active
-        </button>
+        </label>
       </li>
       <li>
-        <button
-          onClick={() => {
-            handleFilterChange('Completed');
-            handleButtonClick();
-          }}
-        >
+        <label>
+          <input
+            type="radio"
+            value="Completed"
+            checked={selectedFilter === 'Completed'}
+            onChange={() => handleFilterChange('Completed')}
+            className={selectedFilter === 'Completed' ? classes.selected : ''}
+          />
           Completed
-        </button>
+        </label>
       </li>
     </ul>
   );
